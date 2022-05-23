@@ -2,12 +2,22 @@ import os
 from pathlib import Path
 
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='f*it@h@llpukmvtho_zkn5zn$n8plyi*&v4%h2k&h@l#t8f&@f')
 
 DEBUG = 'HIROSHI_DEBUG' in os.environ
+
+if not DEBUG:
+    sentry_sdk.init(
+        dsn=os.environ.get('SENTRY_DSN'),
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=True
+    )
 
 ALLOWED_HOSTS = []
 

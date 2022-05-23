@@ -38,7 +38,9 @@ asgiref==3.5.2 \
 certifi==2022.5.18.1 \
     --hash=sha256:9c5705e395cd70084351dd8ad5c41e65655e08ce46f2ec9cf6c2c08390f71eb7 \
     --hash=sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a
-    # via requests
+    # via
+    #   requests
+    #   sentry-sdk
 cffi==1.15.0 \
     --hash=sha256:00c878c90cb53ccfaae6b8bc18ad05d2036553e6d9d1d9dbcf323bbe83854ca3 \
     --hash=sha256:0104fb5ae2391d46a4cb082abdd5c69ea4eab79d8d44eaaf79f1b1fd806ee4c2 \
@@ -248,6 +250,10 @@ requests==2.27.1 \
 rollbar==0.16.2 \
     --hash=sha256:aa3b570062dd8dfb0e11537ba858f9e1633a604680e062a525434b8245540f87
     # via -r requirements.in
+sentry-sdk==1.5.12 \
+    --hash=sha256:259535ba66933eacf85ab46524188c84dcb4c39f40348455ce15e2c0aca68863 \
+    --hash=sha256:778b53f0a6c83b1ee43d3b7886318ba86d975e686cb2c7906ccc35b334360be1
+    # via -r requirements.in
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
     --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
@@ -263,7 +269,9 @@ tzdata==2022.1 \
 urllib3==1.26.9 \
     --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14 \
     --hash=sha256:aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e
-    # via requests
+    # via
+    #   requests
+    #   sentry-sdk
 yubiotp==1.0.0 \
     --hash=sha256:3a1b3fa3ade196fb62a8c6716dfe0ee679ac7a06616625b489cf6039daa17f08 \
     --hash=sha256:cb1cc0e2eeadc86ced363c9da4de552cc2bfb5d6465180035795b417e4f71aad
