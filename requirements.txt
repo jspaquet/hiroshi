@@ -264,10 +264,6 @@ urllib3==1.26.9 \
     --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14 \
     --hash=sha256:aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e
     # via requests
-whitenoise==6.1.0 \
-    --hash=sha256:2067fe9008a3cd7d0d75f75c9240b54f5f59996ca285cbeab18fc1e89949e30d \
-    --hash=sha256:6ccc6d1ad6fb688a398ea65d97db47f018ea0be7da75e146e8f2e837a04ba590
-    # via -r requirements.in
 yubiotp==1.0.0 \
     --hash=sha256:3a1b3fa3ade196fb62a8c6716dfe0ee679ac7a06616625b489cf6039daa17f08 \
     --hash=sha256:cb1cc0e2eeadc86ced363c9da4de552cc2bfb5d6465180035795b417e4f71aad

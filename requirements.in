@@ -11,4 +11,3 @@ psycopg2-binary
 qrcode
 rollbar
 tzdata
-whitenoise

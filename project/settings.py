@@ -1,19 +1,26 @@
 import os
 from pathlib import Path
 
+import dj_database_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='f*it@h@llpukmvtho_zkn5zn$n8plyi*&v4%h2k&h@l#t8f&@f')
 
 DEBUG = 'HIROSHI_DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['hiroshi.j17t.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
+
+if not DEBUG:
+    if 'FLY_APP_NAME' in os.environ:
+        ALLOWED_HOSTS.append(os.environ.get('FLY_APP_NAME') + '.fly.dev')
+    ALLOWED_HOSTS.append('hiroshi.j17t.com')
+    ALLOWED_HOSTS.append('localhost')
+    ALLOWED_HOSTS.append('127.0.0.1')
 
 CSRF_TRUSTED_ORIGINS = ['https://hiroshi.j17t.com']
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
-
     'authentication',
     'base',
 
@@ -40,7 +47,6 @@ AUTH_USER_MODEL = 'authentication.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,12 +76,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgresql://postgres:postgres@localhost:5432/cms_db',
+            conn_max_age=600
+        )
+    }
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.Argon2PasswordHasher',
