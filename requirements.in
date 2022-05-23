@@ -1,0 +1,14 @@
+argon2-cffi
+dj-database-url
+django
+django-admin-env-notice
+django-filter
+django-otp-yubikey
+django-taggit
+djangorestframework
+gunicorn
+psycopg2-binary
+qrcode
+rollbar
+tzdata
+whitenoise

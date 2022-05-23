@@ -1,0 +1,9 @@
+{% if bookmarks_list %}
+  <ul>
+    {% for bookmark in bookmarks_list %}
+      <li><a href="{% url 'base:details' bookmark.id %}">{{ bookmark.link }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No bookmarks are available.</p>
+{% endif %}
