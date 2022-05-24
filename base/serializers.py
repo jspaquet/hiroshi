@@ -6,8 +6,8 @@ from base.models import Bookmark
 
 class BookmarkSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    creation_at = serializers.DateTimeField(format='%Y%m%dT%H%MZ')
-    modification_at = serializers.DateTimeField(format='%Y%m%dT%H%MZ')
+    creation_at = serializers.DateTimeField(format='%Y%m%dT%H%MZ', read_only=True)
+    modification_at = serializers.DateTimeField(format='%Y%m%dT%H%MZ', read_only=True)
 
     class Meta:
         """
