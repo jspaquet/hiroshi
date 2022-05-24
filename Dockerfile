@@ -1,6 +1,6 @@
 FROM python:3.9-slim
 
-RUN apt-get update  \
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-venv \
@@ -20,8 +20,6 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-
 EXPOSE 8080
 
-# replace APP_NAME with module name
 CMD ["gunicorn", "--bind", ":8080", "--workers", "2", "project.wsgi"]

@@ -1,5 +1,3 @@
-# fly.toml file generated for patient-grass-4563 on 2022-05-23T10:10:30-04:00
-
 app = "patient-grass-4563"
 
 kill_signal = "SIGINT"
