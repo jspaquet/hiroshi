@@ -15,3 +15,6 @@ class Bookmark(models.Model):
     modification_at = models.DateTimeField(auto_now=True, verbose_name='Modification At')
     tags = TaggableManager()
     owner = models.ForeignKey(User, related_name='bookmarks', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
