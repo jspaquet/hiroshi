@@ -25,10 +25,11 @@ if not DEBUG:
     if 'FLY_APP_NAME' in os.environ:
         ALLOWED_HOSTS.append(os.environ.get('FLY_APP_NAME') + '.fly.dev')
     ALLOWED_HOSTS.append('hiroshi.j17t.com')
+    ALLOWED_HOSTS.append('tamotsu.j17t.com')
     ALLOWED_HOSTS.append('localhost')
     ALLOWED_HOSTS.append('127.0.0.1')
 
-CSRF_TRUSTED_ORIGINS = ['https://hiroshi.j17t.com']
+CSRF_TRUSTED_ORIGINS = ['https://hiroshi.j17t.com', 'https://tamotsu.j17t.com']
 
 INSTALLED_APPS = [
     'authentication',
