@@ -6,7 +6,7 @@ if [ -f /app/prod_db.sqlite3 ]; then
 	echo "Database already exists, skipping restore"
 else
 	echo "No database found, restoring from replica if exists"
-	litestream restore -v -if-replica-exists -o prod_db.sqlite3 "${LITESTREAM_REPLICA_URL}"
+	litestream restore -v /app/prod_db.sqlite3
 fi
 
 python manage.py migrate

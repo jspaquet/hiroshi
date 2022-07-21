@@ -4,7 +4,7 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 
 [deploy]
-  release_command = "python manage.py migrate"
+  strategy = "canary"
 
 [[services]]
   internal_port = 8080

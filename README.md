@@ -9,7 +9,7 @@
 ![DDD](https://badgen.net/github/license/jspaquet/tamotsu)
 ![EEE](https://badgen.net/github/last-commit/jspaquet/tamotsu)
 
-A brief description of what this project does and who it's for
+A brief description of what this project does and who it's for.
 
 ## License
 
