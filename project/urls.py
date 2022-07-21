@@ -4,8 +4,8 @@ from django.urls import path, include
 
 from project import settings
 
-admin.site.site_header = 'Hiroshi'
-admin.site.site_title = 'Hiroshi'
+admin.site.site_header = 'Tamotsu'
+admin.site.site_title = 'Tamotsu'
 
 if not settings.DEBUG:
     from django_otp.admin import OTPAdminSite
@@ -26,5 +26,5 @@ urlpatterns = [
     path('trigger-error/', trigger_error),
     path('health-check/', health_check),
     path('config/', admin.site.urls),
-    path('base/', include('base.urls')),
+    path('', include('base.urls')),
 ]

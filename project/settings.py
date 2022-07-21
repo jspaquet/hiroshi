@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='f*it@h@llpukmvtho_zkn5zn$n8plyi*&v4%h2k&h@l#t8f&@f')
 
-DEBUG = 'HIROSHI_DEBUG' in os.environ
+DEBUG = 'TAMOTSU_DEBUG' in os.environ
 
 if not DEBUG:
     sentry_sdk.init(
@@ -24,12 +24,11 @@ ALLOWED_HOSTS = []
 if not DEBUG:
     if 'FLY_APP_NAME' in os.environ:
         ALLOWED_HOSTS.append(os.environ.get('FLY_APP_NAME') + '.fly.dev')
-    ALLOWED_HOSTS.append('hiroshi.j17t.com')
     ALLOWED_HOSTS.append('tamotsu.j17t.com')
     ALLOWED_HOSTS.append('localhost')
     ALLOWED_HOSTS.append('127.0.0.1')
 
-CSRF_TRUSTED_ORIGINS = ['https://hiroshi.j17t.com', 'https://tamotsu.j17t.com']
+CSRF_TRUSTED_ORIGINS = ['https://tamotsu.j17t.com']
 
 INSTALLED_APPS = [
     'authentication',
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'taggit',
+    'import_export',
 
     'django_otp',
     'django_otp.plugins.otp_static',
@@ -92,14 +92,20 @@ if DEBUG:
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
+            'OPTIONS': {
+                'timeout': 5000,
+            },
         }
     }
 else:
     DATABASES = {
-        'default': dj_database_url.config(
-            default='postgresql://postgres:postgres@localhost:5432/cms_db',
-            conn_max_age=600
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'prod_db.sqlite3',
+            'OPTIONS': {
+                'timeout': 5000,
+            },
+        }
     }
 
 PASSWORD_HASHERS = [

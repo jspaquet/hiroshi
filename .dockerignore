@@ -1,0 +1,8 @@
+*.pyc
+.git/
+.gitignore
+.idea/
+__pycache__
+db.sqlite3
+public/
+venv/

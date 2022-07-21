@@ -1,8 +1,15 @@
 from django.contrib import admin
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 from base.models import Bookmark
 import requests
 from bs4 import BeautifulSoup
+
+
+class BookmarkResource(resources.ModelResource):
+    class Meta:
+        model = Bookmark
 
 
 @admin.action(description='Fetch missing titles')
@@ -18,8 +25,9 @@ def fetch_missing_titles(modeladmin, request, queryset):
                 item.save()
 
 
-class BookmarkAdmin(admin.ModelAdmin):
+class BookmarkAdmin(ImportExportModelAdmin):
     actions = [fetch_missing_titles]
+    resource_class = BookmarkResource
 
 
 admin.site.register(Bookmark, BookmarkAdmin)
